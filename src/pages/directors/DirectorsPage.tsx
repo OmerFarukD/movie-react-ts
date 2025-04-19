@@ -15,6 +15,7 @@ import {useEffect, useState} from "react";
 import {DirectorResponseDto} from "../../models/directors/DirectorResponseDto.ts";
 import api from "../../services/api.ts";
 import AddIcon from "@mui/icons-material/Add";
+import { Link } from "react-router";
 
 function DirectorsPage() {
 
@@ -64,7 +65,7 @@ function DirectorsPage() {
                                         <Button size="small" variant="outlined" color="warning" endIcon={<AutoFixNormalIcon/>}>Güncelle</Button>
 
                                         <Button size={"small"} color={"info"} variant={"outlined"}  sx={{marginX:2}} endIcon={<InfoOutlineIcon/>} >
-                                            Detaya Git
+                                           <Link style={{textDecoration:"none"}} to={`/directors/${item.id}`}>Detaya Git</Link>
                                         </Button>
                                     </TableCell>
 

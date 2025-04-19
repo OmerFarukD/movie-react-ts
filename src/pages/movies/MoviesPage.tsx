@@ -15,6 +15,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AutoFixNormalIcon from "@mui/icons-material/AutoFixNormal";
 import InfoOutlineIcon from "@mui/icons-material/InfoOutline";
 import AddIcon from "@mui/icons-material/Add";
+import { Link } from "react-router";
 
 const MoviesPage:FC =()=> {
 
@@ -71,7 +72,7 @@ const MoviesPage:FC =()=> {
                                         <Button size="small" variant="outlined" color="warning" endIcon={<AutoFixNormalIcon/>}>Güncelle</Button>
 
                                         <Button size={"small"} color={"info"} variant={"outlined"}  sx={{marginX:2}} endIcon={<InfoOutlineIcon/>} >
-                                            Detaya Git
+                                           <Link style={{textDecoration:"none"}} to={`/movies/${movie.id}`}>Detaya Git</Link>
                                         </Button>
                                     </TableCell>
                                 </TableRow>

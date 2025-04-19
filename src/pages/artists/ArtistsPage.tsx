@@ -15,6 +15,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AutoFixNormalIcon from "@mui/icons-material/AutoFixNormal";
 import InfoOutlineIcon from '@mui/icons-material/InfoOutline';
 import AddIcon from "@mui/icons-material/Add";
+import { Link } from "react-router";
 
 const ArtistsPage:FC = ()=> {
 
@@ -63,7 +64,7 @@ const ArtistsPage:FC = ()=> {
                                         <Button size="small" variant="outlined" color="warning" endIcon={<AutoFixNormalIcon/>}>Güncelle</Button>
 
                                         <Button size={"small"} color={"info"} variant={"outlined"}  sx={{marginX:2}} endIcon={<InfoOutlineIcon/>} >
-                                            Detaya Git
+                                           <Link style={{textDecoration:"none"}} to={`/artists/${artist.id}`}>Detaya Git</Link>
                                         </Button>
                                     </TableCell>
                                 </TableRow>

@@ -1,8 +1,10 @@
 export interface MovieResponseDto {
+    id:string;
     name: string;
     imdb:number;
-    publishDate:Date;
+    publishDate:string;
     categoryName:string;
     directorName:string;
-
+    imageUrl:string;
+    description:string;
 }

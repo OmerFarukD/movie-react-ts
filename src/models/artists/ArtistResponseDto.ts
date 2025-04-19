@@ -1,7 +1,7 @@
 export  interface ArtistResponseDto {
     id: number;
-    imageUrl:string | null;
-    birthDate:Date;
-    fullName:string| null;
+    imageUrl:string ;
+    birthDate:string;
+    fullName:string;
 
 }

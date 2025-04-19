@@ -1,6 +1,6 @@
 import {ChangeEvent, FormEvent, useState} from 'react';
 import Paper from "@mui/material/Paper";
-import {Box, Button, TextField, Typography} from '@mui/material';
+import {Alert, Box, Button, Snackbar, TextField, Typography} from '@mui/material';
 import {CategoryAddRequest} from "../../models/categories/CategoryAddRequest.ts";
 import api from "../../services/api.ts";
 import {useNavigate} from "react-router";
@@ -8,6 +8,14 @@ import {useNavigate} from "react-router";
 function CategoryAddForm() {
 
     const navigate = useNavigate();
+
+
+    // Snackbar States
+
+    const [openSnackbar,setOpenSnackbar] = useState<boolean>(false);
+    const [snackbarMessage, setSnackbarMessage] = useState<string>();
+    const  [snackbarSeverity, setSnackbarSeverity] = useState<'success'|'error'>("success");
+
 
     const  [category,setCategory]=useState<CategoryAddRequest>({
         name:""
@@ -25,12 +33,27 @@ function CategoryAddForm() {
     }
 
     const  addCategory = async ()=>{
-        const  response = await  api.post("/Categories/add",category);
 
-        if (response.status === 200){
-            alert(response.data);
-            navigate("/categories");
+        try{
+            const  response = await  api.post("/Categories/add",category);
+
+            if (response.status === 200){
+
+                setSnackbarMessage(response.data)
+                setSnackbarSeverity("success")
+                setOpenSnackbar(true)
+
+                setTimeout(()=> navigate("/categories"),1500)
+            }
+        }catch (error : any){
+            const  message = error.response.data.detail;
+            setSnackbarMessage(message);
+            setOpenSnackbar(true)
+            setSnackbarSeverity("error");
         }
+
+
+
     }
 
     return (
@@ -55,6 +78,21 @@ function CategoryAddForm() {
                 </Button>
             </Box>
 
+            <Snackbar
+            open={openSnackbar}
+            autoHideDuration={3000}
+            onClose={()=>setOpenSnackbar(false)}
+            anchorOrigin={{vertical: 'bottom', horizontal: 'center'}}
+            >
+
+                <Alert
+                onClose={()=>setOpenSnackbar(false)}
+                severity={snackbarSeverity}
+                >
+                    {snackbarMessage}
+                </Alert>
+
+            </Snackbar>
         </Paper>
     );
 }
