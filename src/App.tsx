@@ -12,6 +12,7 @@ import CategoryAddForm from "./pages/categories/CategoryAddForm.tsx";
 import MovieDetailsPage from "./pages/movies/MovieDetailsPage.tsx";
 import DirectorDetailsPage from "./pages/directors/DirectorDetailsPage.tsx";
 import ArtistDetailsPage from "./pages/artists/ArtistDetailsPage.tsx";
+import MovieAddForm from "./pages/movies/MovieAddForm.tsx";
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
 
 
                 <Route path={"/categoryAdd"} element={<CategoryAddForm/>}/>
+                <Route path={"/movieAdd"} element={<MovieAddForm/>}/>
             </Routes>
         </Container>
 

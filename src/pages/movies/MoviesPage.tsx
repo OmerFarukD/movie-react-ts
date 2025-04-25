@@ -11,8 +11,6 @@ import TableBody from "@mui/material/TableBody";
 import {FC, useEffect, useState} from "react";
 import {MovieResponseDto} from "../../models/movies/MovieResponseDto.ts";
 import api from "../../services/api.ts";
-import DeleteIcon from "@mui/icons-material/Delete";
-import AutoFixNormalIcon from "@mui/icons-material/AutoFixNormal";
 import InfoOutlineIcon from "@mui/icons-material/InfoOutline";
 import AddIcon from "@mui/icons-material/Add";
 import { Link } from "react-router";
@@ -61,16 +59,6 @@ const MoviesPage:FC =()=> {
                                     <TableCell>{movie.categoryName}</TableCell>
                                     <TableCell>{movie.directorName}</TableCell>
                                     <TableCell>
-                                        <Button
-                                            variant="outlined"
-                                            sx={{marginX:2}}
-                                            color="error"
-                                            endIcon={<DeleteIcon fontSize="small"/>}
-                                            size="small"
-                                        >
-                                            Sil</Button>
-                                        <Button size="small" variant="outlined" color="warning" endIcon={<AutoFixNormalIcon/>}>Güncelle</Button>
-
                                         <Button size={"small"} color={"info"} variant={"outlined"}  sx={{marginX:2}} endIcon={<InfoOutlineIcon/>} >
                                            <Link style={{textDecoration:"none"}} to={`/movies/${movie.id}`}>Detaya Git</Link>
                                         </Button>
@@ -83,7 +71,9 @@ const MoviesPage:FC =()=> {
                     </TableBody>
                 </Table>
             </TableContainer>
-            <Button variant="contained" color="success" sx={{marginY:2}} endIcon={<AddIcon/>}>Ekle</Button>
+            <Link to={"/movieAdd"}>
+                <Button variant="contained" color="success" sx={{marginY:2}} endIcon={<AddIcon/>}>Ekle</Button>
+            </Link>
 
         </Box>
 

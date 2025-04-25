@@ -7,4 +7,5 @@ export interface MovieResponseDto {
     directorName:string;
     imageUrl:string;
     description:string;
+    players:string[];
 }
